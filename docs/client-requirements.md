@@ -4,7 +4,7 @@
 Build a full-stack real estate website for an independent real estate professional. The platform should improve the client's online presence, generate new leads, display property information, and provide a simple way to track clients and completed property transactions.
 
 ## Client
-Independent real estate agent.
+Homelife miracle real estate agent.
 
 ## Primary Goals
 - Create a professional online presence.
