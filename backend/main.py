@@ -1,6 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, status
 
-app = FastAPI()
+from pydantic import BaseModel, EmailStr, Field
+
+from database import supabase
+
+app = FastAPI(title="Real Estate Website API")
 
 @app.get("/")
 
