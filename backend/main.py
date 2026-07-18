@@ -25,17 +25,19 @@ app.add_middleware(
 class LeadCreate(BaseModel):
     full_name: str=Field(min_length=2,max_length=50)
     phone : str | None=Field(default=None, max_length=30)
-    email : EmailStr= Field(minlength=3,max_length=50)
+    email : EmailStr= Field(min_length=3,max_length=50)
     message :str | None=Field(default=None,max_length=2000)
 
 
-@app.get("/")
-def root():
-    return {"message": "API is running"}
+@app.get("/api/listings")
+def getlistings():
+    response=(supabase.table("listings").select("*").eq("featured", True).execute())
+    return response.data
 
 @app.post("/api/leads",status_code=status.HTTP_201_CREATED)
 def post_leads(lead:LeadCreate):
     response=(supabase.table("leads").insert(lead.model_dump()).execute())
     return response.data
+
 
     
