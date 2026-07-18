@@ -1,15 +1,31 @@
 from fastapi import FastAPI, HTTPException, status
 
+from fastapi.middleware.cors import CORSMiddleware
+
 from pydantic import BaseModel, EmailStr, Field
 
 from database import supabase
 
 app = FastAPI(title="Real Estate Website API")
 
+app.add_middleware(
+
+    CORSMiddleware,
+
+    allow_origins=["http://localhost:5175"],
+
+    allow_credentials=True,
+
+    allow_methods=["*"],
+
+    allow_headers=["*"],
+
+)
+
 class LeadCreate(BaseModel):
-    full_name: str
+    full_name: str=Field(min_length=2,max_length=50)
     phone : str | None=Field(default=None, max_length=30)
-    email : EmailStr
+    email : EmailStr= Field(minlength=3,max_length=50)
     message :str | None=Field(default=None,max_length=2000)
 
 
