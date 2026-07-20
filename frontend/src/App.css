@@ -16,7 +16,17 @@
     outline-offset: 2px;
   }
 }
+.card {
 
+    border: 1px solid black;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+
+}
 .hero {
   position: relative;
 

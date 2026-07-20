@@ -1,7 +1,11 @@
-import { useState } from "react";
-export default function ContactForm() {
-    const [leads, setLeads] = useState({ full_name: "", email: "", phone: "", message: "" });
+import { useEffect, useState } from "react";
+export default function ContactForm(props) {
+    const [leads, setLeads] = useState({ full_name: "", email: "", phone: "", message: "" ,listing_id: ""});
     const [status, setStatus] = useState("");
+    useEffect(() => {
+        setLeads({...leads,listing_id:props.listing_id ??null})
+    }, [props.listing_id]);
+
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;

@@ -1,14 +1,15 @@
-
 import './App.css'
+import { Routes, Route } from "react-router-dom";
 import ContactForm from './components/ContactForm'
 import ListingsPage from './components/ListingsPage'
+import PropertyDetails from "./components/PropertyDetails";
+
 function App() {
   return (
-    <main>
-      <h1>Real Estate Website</h1>
-      <ContactForm />
-      <ListingsPage/>
-    </main>
+    <Routes>
+      <Route path="/" element={<><ContactForm /><ListingsPage /></>} />
+      <Route path="/listings/:id" element={<PropertyDetails />} />
+    </Routes>
   );
 }
 

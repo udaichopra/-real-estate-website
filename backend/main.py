@@ -12,7 +12,16 @@ app.add_middleware(
 
     CORSMiddleware,
 
-    allow_origins=["http://localhost:5175"],
+    allow_origins=[
+
+    "http://localhost:5173",
+
+    "http://localhost:5174",
+
+    "http://localhost:5175",
+
+    "http://localhost:5176",
+    ],
 
     allow_credentials=True,
 
@@ -27,12 +36,18 @@ class LeadCreate(BaseModel):
     phone : str | None=Field(default=None, max_length=30)
     email : EmailStr= Field(min_length=3,max_length=50)
     message :str | None=Field(default=None,max_length=2000)
+    listing_id: str | None = None
 
 
 @app.get("/api/listings")
 def getlistings():
     response=(supabase.table("listings").select("*").eq("featured", True).execute())
     return response.data
+@app.get("/api/listings/{id}")
+def getDetails(id:str):
+    response=(supabase.table("listings").select("*").eq("id",id).execute())
+    return response.data
+
 
 @app.post("/api/leads",status_code=status.HTTP_201_CREATED)
 def post_leads(lead:LeadCreate):
