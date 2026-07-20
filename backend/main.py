@@ -38,6 +38,19 @@ class LeadCreate(BaseModel):
     message :str | None=Field(default=None,max_length=2000)
     listing_id: str | None = None
 
+class ListingCreate(BaseModel):
+    image_url: str
+    address: str = Field(min_length=1, max_length=100)
+    city: str = Field(min_length=1, max_length=50)
+    price: int
+    bedrooms: int
+    bathrooms: int
+    square_feet: int
+    description: str = Field(max_length=2000)
+    listing_type: str
+    property_type: str
+    featured: bool
+
 
 @app.get("/api/listings")
 def getlistings():
@@ -55,4 +68,7 @@ def post_leads(lead:LeadCreate):
     return response.data
 
 
-    
+@app.post("/admin/newlisting")
+def post_newlisting(newListing:ListingCreate):
+    response=(supabase.table("listings").insert(newListing.model_dump()).execute())
+    return response.data
