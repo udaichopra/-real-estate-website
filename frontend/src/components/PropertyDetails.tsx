@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ContactForm from "./ContactForm";
+import NavBar from "./Navbar";
 export default function PropertyDetails() {
     
     type Listing = {

@@ -45,7 +45,7 @@ export default function ContactForm(props) {
 
 
     return (
-        <form>
+        <form className="mx-auto flex max-w-md flex-col gap-4">
             <h3>Fullname:</h3><input type="text" name="full_name" onChange={handleChange} ></input>
             <h3>Email:</h3><input type="text" name="email" onChange={handleChange} ></input>
             <h3>Phone: (optional)</h3><input type="text" name="phone" onChange={handleChange} ></input>
