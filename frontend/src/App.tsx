@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage/>}/>
           <Route path="/contact" element={<ContactForm/>}/>
-          <Route path="/listings" element={<><ListingsPage /><ContactForm /></>} />
+          <Route path="/listings" element={<ListingsPage/>} />
           <Route path="/listings/:id" element={<PropertyDetails />} />
           <Route path="/admin/newlisting" element={<AddListingForm />} />
         </Routes>
