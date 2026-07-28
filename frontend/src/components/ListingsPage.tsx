@@ -22,14 +22,17 @@ export default function Listings_Page() {
                         <Link to={`/listings/${listing.id}`}>
                             <div className=" hover:scale-105 grid place-items-center hover:scale-105 hover:text-blue-500 transition-all" key={listing.id}>
                                 <div className="relative">
-                                <img className="text-left"
-                                    src={listing.image_url}
-                                    alt={listing.address}
-                                    width="600"
-                                />
-                                <div className="absolute inset-0 backdrop-blur bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-                                    <span className="text-white text-xl font-bold">View Property Details</span>
-                                </div>
+                                    <div className="absolute top-2 left-2 bg-blue-500 text-white px-4 py-2 rounded-xl text-lg font-bold">
+                                        {listing.listing_type}
+                                    </div>
+                                    <img className="text-left"
+                                        src={listing.image_url}
+                                        alt={listing.address}
+                                        width="600"
+                                    />
+                                    <div className="absolute inset-0 backdrop-blur bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <span className="text-white text-xl font-bold">View Property Details</span>
+                                    </div>
                                 </div>
                                 <h3>Address: {listing.address}</h3>
                                 <h3>City: {listing.city}</h3>

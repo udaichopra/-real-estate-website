@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ContactForm from "./ContactForm";
 import NavBar from "./Navbar";
+import PropertyMap from "./PropertyMap";
 export default function PropertyDetails() {
 
     type Listing = {
@@ -9,6 +10,7 @@ export default function PropertyDetails() {
         image_url: string;
         address: string;
         city: string;
+        province: string;
         price: number;
         listing_type: string;
         property_type: string;
@@ -16,6 +18,8 @@ export default function PropertyDetails() {
         bedrooms: number;
         bathrooms: number;
         description: string;
+        latitude: number;
+        longitude: number;
     };
     const [details, setDetails] = useState<Listing | null>(null);
 
@@ -38,27 +42,42 @@ export default function PropertyDetails() {
         )
     }
     return (
-        <div className="grid rounded-xl border border-blue-950 place-items-center text-3xl text-center pt-5 ">
+        <div className="grid place-items-center text-3xl text-center pt-5 ">
             <div>
                 <div className="grid place-items-center pb-4">
-                    <img
-                        src={details.image_url}
-                        alt={details.address}
-                        width="500"
-                    />
+
+                    <div className="relative">
+                        <div className="absolute top-2 left-2 bg-blue-500 text-white px-4 py-2 rounded-xl text-lg font-bold">
+                            {details.listing_type}
+                        </div>
+
+                        <img
+                            src={details.image_url}
+                            alt={details.address}
+                            width="800"
+                        />
+                    </div>
                 </div>
-                <div className="grid grid-cols-4 gap-2">
-                    <h3>Price: {details.price}</h3>
-                    <h3>City: {details.city}</h3>
-                    <h3>Address: {details.address}</h3>
-                    <h3>Listing type: {details.listing_type}</h3>
-                    <h3>Property type:{details.property_type}</h3>
+                <div className="grid text-left  text-3xl font-bold text-blue-500">
+                    <h3>{details.address} , {details.city}, {details.province}</h3>
+                    <h3>${details.price}</h3>
+                </div>
+                <div className="grid text-left pt-5 pb-10 text-3xl font-bold">
+                    <h3>Property details:</h3>
+                </div>
+
+                <div className="grid text-left gap-2">
                     <h3>Square footage: {details.square_feet}</h3>
                     <h3>Bedrooms: {details.bedrooms}</h3>
                     <h3>Bathrooms: {details.bathrooms}</h3>
+                    <h3 >Description: {details.description}</h3>
                 </div>
                 <div className="grid place-items-center">
-                    <h3 >Description: {details.description}</h3>
+                    <PropertyMap
+                        latitude={details.latitude}
+                        longitude={details.longitude}
+                        address={`${details.address}, ${details.city}`}
+                    />
                 </div>
                 <div className="pt-4">
                     <h3>Intrested in this property or need more info?</h3>

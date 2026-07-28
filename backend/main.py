@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, status
-
+import httpx
 from fastapi.middleware.cors import CORSMiddleware
 
 from pydantic import BaseModel, EmailStr, Field
@@ -30,6 +30,52 @@ app.add_middleware(
     allow_headers=["*"],
 
 )
+def geocode_address(
+    address: str,
+    city: str,
+    province: str,
+    postal_code: str,
+) -> tuple[float, float]:
+    full_address = (
+        f"{address}, {city}, {province}, "
+        f"{postal_code}, Canada"
+    )
+
+    try:
+        response = httpx.get(
+            "https://nominatim.openstreetmap.org/search",
+            params={
+                "q": full_address,
+                "format": "jsonv2",
+                "limit": 1,
+                "countrycodes": "ca",
+            },
+            headers={
+                "User-Agent": (
+                    "PuneetChopraRealEstate/1.0 "
+                    "(contact: udai25chopra@gmail.com)"
+                )
+            },
+            timeout=10.0,
+        )
+
+        response.raise_for_status()
+
+    except httpx.HTTPError as error:
+        raise HTTPException(
+            status_code=502,
+            detail=f"Geocoding service failed: {str(error)}",
+        )
+
+    results = response.json()
+
+    if not results:
+        raise HTTPException(
+            status_code=400,
+            detail="Address could not be located.",
+        )
+
+    return float(results[0]["lat"]), float(results[0]["lon"])
 
 class LeadCreate(BaseModel):
     full_name: str=Field(min_length=2,max_length=50)
@@ -50,6 +96,8 @@ class ListingCreate(BaseModel):
     listing_type: str
     property_type: str
     featured: bool
+    province: str = Field(min_length=2, max_length=50)
+    postal_code: str = Field(min_length=3, max_length=10)
 
 
 @app.get("/api/listings")
@@ -68,7 +116,21 @@ def post_leads(lead:LeadCreate):
     return response.data
 
 
-@app.post("/admin/newlisting")
-def post_newlisting(newListing:ListingCreate):
-    response=(supabase.table("listings").insert(newListing.model_dump()).execute())
+@app.post("/admin/newlisting",status_code=status.HTTP_201_CREATED,)
+def post_newlisting(new_listing: ListingCreate):
+    latitude, longitude = geocode_address(
+        new_listing.address,
+        new_listing.city,
+        new_listing.province,
+        new_listing.postal_code,
+    )
+    listing_data = new_listing.model_dump()
+    listing_data["latitude"] = latitude
+    listing_data["longitude"] = longitude
+    response = (
+        supabase
+        .table("listings")
+        .insert(listing_data)
+        .execute()
+    )
     return response.data

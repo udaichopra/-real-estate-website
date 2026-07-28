@@ -45,11 +45,11 @@ export default function ContactForm(props) {
 
 
     return (
-        <form className="grid mx-auto flex max-w-md flex-col gap-4 text-3xl">
-            <h3>Fullname:</h3><input className="flex bg-sky-800 rounded-xl" type="text" name="full_name" onChange={handleChange} ></input>
-            <h3>Email:</h3><input className="flex bg-sky-800 rounded-xl" type="text" name="email" onChange={handleChange} ></input>
-            <h3>Phone: (optional)</h3><input className="flex bg-sky-800 rounded-xl" type="text" name="phone" onChange={handleChange} ></input>
-            <h3>Message:(optional)</h3><input className="flex bg-sky-800 rounded-xl" type="text" name="message" onChange={handleChange} ></input>
+        <form className="grid mx-auto flex max-w-md border rounded-4xl border-2xl m-10 p-10 px-5 flex-col gap-4 text-3xl">
+            <h3>Full-name:</h3><input className="flex border rounded-xl text-left" type="text" name="full_name" onChange={handleChange} ></input>
+            <h3>Email:</h3><input className="flex border rounded-xl" type="text" name="email" onChange={handleChange} ></input>
+            <h3>Phone: (optional)</h3><input className="flex border rounded-xl" type="text" name="phone" onChange={handleChange} ></input>
+            <h3>Message:(optional)</h3><input className="flex border rounded-xl" type="text" name="message" onChange={handleChange} ></input>
             <h3>   </h3>
             <button className="grid bg-sky-800 rounded-xl text-center" type="button" onClick={handleClick}>Sumbit your inquiry</button>
             <h3>{status}</h3>
