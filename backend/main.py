@@ -21,6 +21,8 @@ app.add_middleware(
     "http://localhost:5175",
 
     "http://localhost:5176",
+
+    "http://10.0.0.217:5173",
     ],
 
     allow_credentials=True,

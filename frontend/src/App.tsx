@@ -10,11 +10,11 @@ import HomePage from "./components/HomePage";
 function App() {
   return (
     <main className="min-h-screen bg-gray-950 text-white">
+      <NavBar />
       <div className="mx-auto max-w-6xl px-6 py-10">
-        <NavBar />
         <Routes>
           <Route path="/" element={<HomePage/>}/>
-          <Route path="/contact" element={<ContactForm/>}/>
+          <Route path="/contact" element={<ContactForm showIntro={true}/>}/>
           <Route path="/listings" element={<ListingsPage/>} />
           <Route path="/listings/:id" element={<PropertyDetails />} />
           <Route path="/admin/newlisting" element={<AddListingForm />} />
