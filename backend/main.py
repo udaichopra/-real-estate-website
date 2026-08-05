@@ -118,21 +118,41 @@ def post_leads(lead:LeadCreate):
     return response.data
 
 
-@app.post("/admin/newlisting",status_code=status.HTTP_201_CREATED,)
+@app.post("/admin/newlisting", status_code=status.HTTP_201_CREATED)
 def post_newlisting(new_listing: ListingCreate):
+    existing_listing = (
+        supabase
+        .table("listings")
+        .select("id")
+        .ilike("address", new_listing.address.strip())
+        .ilike("city", new_listing.city.strip())
+        .ilike("province", new_listing.province.strip())
+        .ilike("postal_code", new_listing.postal_code.replace(" ", ""))
+        .execute()
+    )
+
+    if existing_listing.data:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="This listing has already been uploaded.",
+        )
+
     latitude, longitude = geocode_address(
         new_listing.address,
         new_listing.city,
         new_listing.province,
         new_listing.postal_code,
     )
+
     listing_data = new_listing.model_dump()
     listing_data["latitude"] = latitude
     listing_data["longitude"] = longitude
+
     response = (
         supabase
         .table("listings")
         .insert(listing_data)
         .execute()
     )
+
     return response.data

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../config";
 export default function AddListingForm() {
     const [newListing, setNewListing] = useState({
         image_url: "", address: "", city: "", price: "", bedrooms: "", bathrooms: "", listing_type: "",
@@ -21,8 +22,7 @@ export default function AddListingForm() {
         event.preventDefault();
 
         try {
-            const response = await fetch(
-                "http://127.0.0.1:8000/admin/newlisting",
+            const response = await fetch(`${API_URL}/admin/newlisting`,
                 {
                     method: "POST",
                     headers: {

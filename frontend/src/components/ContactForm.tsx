@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../config";
 type ContactFormProps = {
     listing_id?: string;
     showIntro?: boolean;
@@ -10,7 +11,7 @@ export default function ContactForm({ listing_id, showIntro = false, }: ContactF
         setLeads({ ...leads, listing_id: listing_id ?? "" })
     }, [listing_id]);
 
-    const handleChange = (event) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const name = event.target.name;
         const value = event.target.value;
         setLeads({ ...leads, [name]: value })
@@ -25,8 +26,7 @@ export default function ContactForm({ listing_id, showIntro = false, }: ContactF
         }
 
         try {
-            const response = await fetch(
-                "http://10.0.0.217:8000/api/leads",
+            const response = await fetch(`${API_URL}/api/leads`,
                 {
                     method: "POST",
                     headers: {

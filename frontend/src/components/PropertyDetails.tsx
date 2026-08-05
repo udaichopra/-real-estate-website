@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ContactForm from "./ContactForm";
-import NavBar from "./Navbar";
+
 import PropertyMap from "./PropertyMap";
+import { API_URL } from "../config";
 export default function PropertyDetails() {
 
     type Listing = {
@@ -27,7 +28,7 @@ export default function PropertyDetails() {
     const { id } = useParams();
 
     const get_Details = async () => {
-        const response = await fetch(`http://10.0.0.217:8000/api/listings/${id}`);
+        const response = await fetch(`${API_URL}/api/listings/${id}`);
         const data = await response.json()
         setDetails(data[0])
 
