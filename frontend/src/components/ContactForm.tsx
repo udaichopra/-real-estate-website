@@ -69,7 +69,7 @@ export default function ContactForm({ listing_id, showIntro = false, }: ContactF
             <h3>   </h3>
             <button className="grid bg-blue-900 rounded-xl text-center" type="button" onClick={handleClick}>Sumbit your inquiry</button>
             {status && (
-                <h3 className="text-center text-red-500">{status}</h3>
+                <h3 className="text-center text-blue-500">{status}</h3>
             )}
         </form>
 
