@@ -6,6 +6,8 @@ import PropertyDetails from "./components/PropertyDetails";
 import AddListingForm from "./components/AddListingForm";
 import NavBar from "./components/Navbar";
 import HomePage from "./components/HomePage";
+import AdminLogin from "./components/AdminLogin";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -17,7 +19,8 @@ function App() {
           <Route path="/contact" element={<ContactForm showIntro={true}/>}/>
           <Route path="/listings" element={<ListingsPage/>} />
           <Route path="/listings/:id" element={<PropertyDetails />} />
-          <Route path="/admin/newlisting" element={<AddListingForm />} />
+          <Route path="/admin/newlisting" element={<ProtectedRoute> <AddListingForm /></ProtectedRoute>} />
+          <Route path="/admin/login" element={<AdminLogin />} />
         </Routes>
         </div>
     </main >
