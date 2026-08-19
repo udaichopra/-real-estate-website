@@ -8,7 +8,8 @@ import NavBar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 import AdminLogin from "./components/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import AdminViewListing from "./components/AdminViewListings";
+import AdminEditListing from "./components/AdminEditListing";
 function App() {
   return (
     <main className="min-h-screen bg-gray-950 text-white">
@@ -21,6 +22,8 @@ function App() {
           <Route path="/listings/:id" element={<PropertyDetails />} />
           <Route path="/admin/newlisting" element={<ProtectedRoute> <AddListingForm /></ProtectedRoute>} />
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/viewlistings" element={<ProtectedRoute> <AdminViewListing /></ProtectedRoute>} />
+          <Route path="/admin/editlisting/:id" element={<ProtectedRoute> <AdminEditListing /></ProtectedRoute>} />
         </Routes>
         </div>
     </main >

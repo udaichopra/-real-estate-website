@@ -106,7 +106,7 @@ class ListingCreate(BaseModel):
 
 @app.get("/api/listings")
 def getlistings():
-    response=(supabase.table("listings").select("*").eq("featured", True).execute())
+    response=(supabase.table("listings").select("*").execute())
     return response.data
 @app.get("/api/listings/{id}")
 def getDetails(id:str):
@@ -130,6 +130,7 @@ def post_newlisting(new_listing: ListingCreate):
         .ilike("city", new_listing.city.strip())
         .ilike("province", new_listing.province.strip())
         .ilike("postal_code", new_listing.postal_code.replace(" ", ""))
+        .ilike("bedrooms,")
         .execute()
     )
 
@@ -158,3 +159,9 @@ def post_newlisting(new_listing: ListingCreate):
     )
 
     return response.data
+@app.put("/admin/editlisting/{id}")
+def update(id:str,updated_listing: ListingCreate):
+    response=(supabase.table("listings").update(updated_listing.model_dump()).eq("id",id).execute())
+    return response.data
+
+
