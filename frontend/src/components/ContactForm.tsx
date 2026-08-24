@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { API_URL } from "../config";
 type ContactFormProps = {
     listing_id?: string;
-    showIntro?: boolean;
     heading?: string;
 };
-export default function ContactForm({ listing_id, showIntro = false, heading="Ready to Buy, Sell, or Rent?" }: ContactFormProps) {
+export default function ContactForm({ listing_id, heading="Ready to Buy, Sell, or Rent?" }: ContactFormProps) {
     const [leads, setLeads] = useState({ full_name: "", email: "", phone: "", message: "", listing_id: "" });
     const [status, setStatus] = useState("");
     useEffect(() => {

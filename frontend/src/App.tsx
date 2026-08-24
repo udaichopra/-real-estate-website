@@ -22,7 +22,7 @@ function App() {
           path="/contact"
           element={
             <div className="bg-navy">
-              <ContactForm showIntro={true} />
+              <ContactForm/>
             </div>
           }
         />
