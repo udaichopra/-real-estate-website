@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+    --font-display: "Cormorant Garamond", Georgia, serif;
+    --font-sans: "DM Sans", system-ui, sans-serif;
+
+    --color-navy: #0B1F3A;
+    --color-navy-mid: #1A3558;
+
+    --color-gold: #C8A84B;
+    --color-gold-light: #E2C97E;
+
+    --color-cream: #F6F2EB;
+}
+
 body {
     margin: 0;
 }

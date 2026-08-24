@@ -1,7 +1,6 @@
-
 import { Routes, Route } from "react-router-dom";
-import ContactForm from './components/ContactForm'
-import ListingsPage from './components/ListingsPage'
+import ContactForm from "./components/ContactForm";
+import ListingsPage from "./components/ListingsPage";
 import PropertyDetails from "./components/PropertyDetails";
 import AddListingForm from "./components/AddListingForm";
 import NavBar from "./components/Navbar";
@@ -10,24 +9,85 @@ import AdminLogin from "./components/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminViewListing from "./components/AdminViewListings";
 import AdminEditListing from "./components/AdminEditListing";
+
 function App() {
   return (
     <main className="min-h-screen bg-gray-950 text-white">
       <NavBar />
-      <div className="mx-auto max-w-6xl px-6 py-10">
-        <Routes>
-          <Route path="/" element={<HomePage/>}/>
-          <Route path="/contact" element={<ContactForm showIntro={true}/>}/>
-          <Route path="/listings" element={<ListingsPage/>} />
-          <Route path="/listings/:id" element={<PropertyDetails />} />
-          <Route path="/admin/newlisting" element={<ProtectedRoute> <AddListingForm /></ProtectedRoute>} />
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/viewlistings" element={<ProtectedRoute> <AdminViewListing /></ProtectedRoute>} />
-          <Route path="/admin/editlisting/:id" element={<ProtectedRoute> <AdminEditListing /></ProtectedRoute>} />
-        </Routes>
-        </div>
-    </main >
 
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+
+        <Route
+          path="/contact"
+          element={
+            <div className="mx-auto max-w-6xl px-6 py-10">
+              <ContactForm showIntro={true} />
+            </div>
+          }
+        />
+
+        <Route
+          path="/listings"
+          element={
+            <div className="mx-auto max-w-6xl px-6 py-10">
+              <ListingsPage />
+            </div>
+          }
+        />
+
+        <Route
+          path="/listings/:id"
+          element={
+            <div className="mx-auto max-w-6xl px-6 py-10">
+              <PropertyDetails />
+            </div>
+          }
+        />
+
+        <Route
+          path="/admin/newlisting"
+          element={
+            <div className="mx-auto max-w-6xl px-6 py-10">
+              <ProtectedRoute>
+                <AddListingForm />
+              </ProtectedRoute>
+            </div>
+          }
+        />
+
+        <Route
+          path="/admin/login"
+          element={
+            <div className="mx-auto max-w-6xl px-6 py-10">
+              <AdminLogin />
+            </div>
+          }
+        />
+
+        <Route
+          path="/admin/viewlistings"
+          element={
+            <div className="mx-auto max-w-6xl px-6 py-10">
+              <ProtectedRoute>
+                <AdminViewListing />
+              </ProtectedRoute>
+            </div>
+          }
+        />
+
+        <Route
+          path="/admin/editlisting/:id"
+          element={
+            <div className="mx-auto max-w-6xl px-6 py-10">
+              <ProtectedRoute>
+                <AdminEditListing />
+              </ProtectedRoute>
+            </div>
+          }
+        />
+      </Routes>
+    </main>
   );
 }
 
