@@ -4,7 +4,7 @@ type ContactFormProps = {
     listing_id?: string;
     heading?: string;
 };
-export default function ContactForm({ listing_id, heading="Ready to Buy, Sell, or Rent?" }: ContactFormProps) {
+export default function ContactForm({ listing_id, heading = "Ready to Buy, Sell, or Rent?" }: ContactFormProps) {
     const [leads, setLeads] = useState({ full_name: "", email: "", phone: "", message: "", listing_id: "" });
     const [status, setStatus] = useState("");
     useEffect(() => {
@@ -59,25 +59,36 @@ export default function ContactForm({ listing_id, heading="Ready to Buy, Sell, o
 
 
             <div className="bg-navy-mid/75 px-6 py-10 md:px-10 md:py-20">
-                <h3 className=" my-5 md:mx-6 text-left font-display text-gold font-bold text-3xl md:text-4xl font-bold max-w-100 ">
-                    {heading}
-                </h3>
+                <div className="w-full max-w-md lg:max-w-lg xl:max-w-xl mx-auto">
+                    <h3 className="font-display text-gold font-bold text-3xl md:text-4xl xl:text-5xl">
+                        {heading}
+                    </h3>
 
+                    <p className="mt-4 text-white/55 text-lg md:text-xl xl:text-2xl">
+                        Fill out the form and Team Chopra will reach out to you within
+                        one business day to discuss your real estate needs.
+                    </p>
 
-                <h3 className="text-left md:mt-4 md:mx-6  text-white/55 max-w-90 text-lg md:text-xl">Fill out the form and Team Chopra will reach out to you within one business day to dicuss your real estate needs.</h3>
-                <hr className="border-gold m-1 mt-3 border-2xl w-40 md:mx-6 "></hr>
-                <h3 className="text-white text-xl md:mx-6 mt-5">Team Chopra's Contact info</h3>
-                <h3 className="text-white/55 md:mx-6 mt-5">Phone</h3>
-                <h3 className="text-white md:mx-6 mt-1">416-454-4450</h3>
-                <h3 className="text-white/55 md:mx-6 mt-7">Email</h3>
-                <h3 className="text-white md:mx-6 mt-1">turningyourdreams@gmail.com</h3>
-                <h3 className="text-white/55 md:mx-6 mt-7">Brokerage</h3>
-                <h3 className="text-white md:mx-6 mt-1">Homelife Miracle</h3>
+                    <hr className="border-gold mt-4 w-40" />
+
+                    <h3 className="text-white text-xl xl:text-2xl mt-5">
+                        Team Chopra's Contact info
+                    </h3>
+
+                    <p className="text-white/55 mt-5">Phone</p>
+                    <p className="text-white mt-1">416-454-4450</p>
+
+                    <p className="text-white/55 mt-7">Email</p>
+                    <p className="text-white mt-1">turningyourdreams@gmail.com</p>
+
+                    <p className="text-white/55 mt-7">Brokerage</p>
+                    <p className="text-white mt-1">Homelife Miracle</p>
+                </div>
             </div>
 
 
 
-            <form className="mx-auto flex w-full max-w-md flex-col gap-4 px-6 md:px-1 py-10 md:py-20" onSubmit={handleClick}>
+            <form className="mx-auto flex w-full max-w-md lg:max-w-lg xl:max-w-xl flex-col gap-4 px-6 py-10 md:py-20" onSubmit={handleClick}>
                 <h3 className="font-display font-bold pt-5 text-gold text-3xl md:text-4xl">Send Us a Message</h3>
                 <h3 className="mt-5">Full name:</h3><input className="flex text-left text-white/50 text-md md:text-lg" type="text" name="full_name" placeholder="John Smith" onChange={handleChange} ></input>
                 <hr className="border-white/50"></hr>
