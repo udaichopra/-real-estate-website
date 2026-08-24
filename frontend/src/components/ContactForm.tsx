@@ -37,8 +37,16 @@ export default function ContactForm({ listing_id, heading = "Ready to Buy, Sell,
             );
 
             const data = await response.json();
+
             if (!response.ok) {
-                setStatus(data.detail);
+                console.log(data);
+
+                if (Array.isArray(data.detail)) {
+                    setStatus(data.detail.map((error: any) => error.msg).join(", "));
+                } else {
+                    setStatus(data.detail || "Unable to submit inquiry.");
+                }
+
                 return;
             }
             setStatus("Thanks! Puneet will contact you shortly!");
