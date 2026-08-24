@@ -21,7 +21,7 @@ function App() {
         <Route
           path="/contact"
           element={
-            <div className="mx-auto max-w-6xl px-6 py-10">
+            <div className="bg-navy">
               <ContactForm showIntro={true} />
             </div>
           }
@@ -30,7 +30,7 @@ function App() {
         <Route
           path="/listings"
           element={
-            <div className="mx-auto max-w-6xl px-6 py-10">
+            <div className=" bg-navy">
               <ListingsPage />
             </div>
           }
@@ -39,7 +39,7 @@ function App() {
         <Route
           path="/listings/:id"
           element={
-            <div className="mx-auto max-w-6xl px-6 py-10">
+            <div className="min-h-screen bg-navy">
               <PropertyDetails />
             </div>
           }

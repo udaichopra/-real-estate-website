@@ -92,11 +92,8 @@ export default function PropertyDetails() {
                         address={`${details.address}, ${details.city}`}
                     />
                 </div>
-                <div className="pt-4">
-                    <h3 className="font-bold">Interested in this property or need more info?</h3>
-                    <h3 className="text-lg pt-1">Enter your info below and Puneet will contact you with next steps!</h3>
-                    <hr className="mt-2 border-gray-300" />
-                    <ContactForm listing_id={details.id} />
+                <div className="pt-4 text-lg text-left">
+                    <ContactForm listing_id={details.id} heading="Interested in this property or need more info?" />
                 </div>
             </div>
         </div>

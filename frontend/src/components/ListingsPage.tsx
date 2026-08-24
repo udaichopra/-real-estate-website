@@ -23,11 +23,11 @@ export default function Listings_Page() {
     return (
         <div>
             
-            <h3 className="text-left ml-14 text-2xl md:text-3xl font-bold pt-2 m-5">Current listings</h3>
+            <h3 className="text-left md:ml-14 text-2xl md:text-3xl font-bold pt-2 m-5">Current listings</h3>
 
             <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full text-3xl">
                 {listings.length === 0 && (
-                    <h3>No properties are currently available</h3>
+                    <h3 className="text-lg md:text-2xl">No properties are currently available</h3>
                 )}
                 {listings.map((listing) => (
                     <div>
