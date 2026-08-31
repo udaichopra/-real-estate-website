@@ -5,6 +5,8 @@ type Listing = {
     city: string;
     price: number;
     listing_type: string;
+    bedrooms: number;
+    bathrooms: number;
 };
 type ListingsFilterProps = {
     setlistings: React.Dispatch<React.SetStateAction<Listing[]>>;
@@ -69,15 +71,15 @@ export default function ListingsFilter({ setlistings, getListings }: ListingsFil
     };
     return (
         <div>
-            <h3 className="font-display text-left text-3xl md:text-4xl font-bold pt-5 md:pt-10 mx-10 md:mx-30">Team Chopra's Current Listings</h3>
+            <h3 className="font-display text-left text-2xl md:text-3xl font-bold pt-5 md:pt-10 mx-5 md:mx-10">Team Chopra's Current Listings</h3>
             <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-center text-left text-lg md:text-xl p-5">
-                <select className="border rounded border-gold/75 p-2 bg-navy/75" name="listing_type" onChange={handleChange}>
+                <select value={ListingFilter.listing_type} className="hover:scale-110 transition-all border rounded border-gold/75 p-2 bg-navy/75" name="listing_type" onChange={handleChange}>
                     <option value="">All Listings</option>
                     <option value="For Sale"> For Sale </option>
                     <option value="For lease" > For Lease </option>
                 </select>
 
-                <select className="border rounded border-gold/75 p-2 bg-navy/75" name="property_type" onChange={handleChange}>
+                <select value={ListingFilter.property_type} className="hover:scale-110 transition-all border rounded border-gold/75 p-2 bg-navy/75" name="property_type" onChange={handleChange}>
                     <option value="">All Property Types</option>
                     <option value="Detached"> Detached </option>
                     <option value="Semi-Detached" > Semi-Detached </option>
@@ -85,7 +87,7 @@ export default function ListingsFilter({ setlistings, getListings }: ListingsFil
                     <option value="condo" > Condo </option>
                 </select>
 
-                <select className="border rounded border-gold/75 p-2 bg-navy/75" name="min_price" onChange={handleChange}>
+                <select value={ListingFilter.min_price} className="hover:scale-110 transition-all border rounded border-gold/75 p-2 bg-navy/75" name="min_price" onChange={handleChange}>
                     <option value="">No Min Price</option>
                     <option value="300000">$300,000</option>
                     <option value="500000">$500,000</option>
@@ -95,7 +97,7 @@ export default function ListingsFilter({ setlistings, getListings }: ListingsFil
                     <option value="2000000">$2,000,000</option>
                 </select>
 
-                <select className="border rounded border-gold/75 p-2 bg-navy/75" name="max_price" onChange={handleChange}>
+                <select value={ListingFilter.max_price} className="hover:scale-110 transition-all border rounded border-gold/75 p-2 bg-navy/75" name="max_price" onChange={handleChange}>
                     <option value="">No Max Price</option>
                     <option value="500000">$500,000</option>
                     <option value="750000">$750,000</option>
@@ -104,8 +106,21 @@ export default function ListingsFilter({ setlistings, getListings }: ListingsFil
                     <option value="2000000">$2,000,000</option>
                     <option value="3000000">$3,000,000</option>
                 </select>
-                <input className="border rounded border-gold p-2 bg-navy/75" placeholder="City" type="text" name="city" value={ListingFilter.city} onChange={handleChange}></input>
-                <select className="border rounded border-gold/75 p-2 bg-navy/75" name="bedrooms" onChange={handleChange}>
+
+                <select value={ListingFilter.city} className="hover:scale-110 transition-all border rounded border-gold/75 p-2 bg-navy/75" name="city" onChange={handleChange}>
+                    <option value="">All Cities</option>
+                    <option value="Brampton">Brampton</option>
+                    <option value="Mississauga">Mississauga</option>
+                    <option value="Toronto">Toronto</option>
+                    <option value="Caledon">Caledon</option>
+                    <option value="Vaughan">Vaughan</option>
+                    <option value="Markham">Markham</option>
+                    <option value="Richmond Hill">Richmond Hill</option>
+                    <option value="Oakville">Oakville</option>
+                    <option value="Milton">Milton</option>
+                    <option value="Burlington">Burlington</option>
+                </select>
+                <select value={ListingFilter.bedrooms} className="hover:scale-110 transition-all border rounded border-gold/75 p-2 bg-navy/75" name="bedrooms" onChange={handleChange}>
                     <option value="">Any Beds</option>
                     <option value="1">1+ Beds</option>
                     <option value="2">2+ Beds</option>
@@ -113,7 +128,7 @@ export default function ListingsFilter({ setlistings, getListings }: ListingsFil
                     <option value="4">4+ Beds</option>
                     <option value="5">5+ Beds</option>
                 </select>
-                <select className="border rounded border-gold/75 p-2 bg-navy/75" name="bathrooms" onChange={handleChange}>
+                <select value={ListingFilter.bathrooms} className="hover:scale-110 transition-all border rounded border-gold/75 p-2 bg-navy/75" name="bathrooms" onChange={handleChange}>
                     <option value="">Any Bathrooms</option>
                     <option value="1">1+ Bathrooms</option>
                     <option value="2">2+ Bathrooms</option>
@@ -124,8 +139,8 @@ export default function ListingsFilter({ setlistings, getListings }: ListingsFil
 
             </div>
             <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-center text-left p-3 ">
-                <button className="border rounded bg-gold/75 p-1" type="button" onClick={handleFilter}> Apply filters </button>
-                <button className="border rounded bg-gold/75 p-1" type="button" onClick={clearFilter}> Clear filters </button>
+                <button className="hover:scale-110 transition-all border rounded bg-gold/75 p-1" type="button" onClick={handleFilter}> Apply filters </button>
+                <button className="hover:scale-110 transition-all border rounded bg-gold/75 p-1" type="button" onClick={clearFilter}> Clear filters </button>
             </div>
         </div>
 

@@ -62,17 +62,17 @@ export default function ContactForm({ listing_id, heading = "Ready to Buy, Sell,
 
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-[40%_60%]">
+        <div className="grid grid-cols-1 md:grid-cols-[50%_50%]">
 
 
 
             <div className="bg-navy-mid/75 px-6 py-10 md:px-10 md:py-20">
                 <div className="w-full max-w-md lg:max-w-lg xl:max-w-xl mx-auto">
-                    <h3 className="font-display text-gold font-bold text-3xl md:text-4xl xl:text-5xl">
+                    <h3 className="font-display text-gold font-bold text-2xl md:text-3xl xl:text-5xl">
                         {heading}
                     </h3>
 
-                    <p className="mt-4 text-white/55 text-lg md:text-xl xl:text-2xl">
+                    <p className="mt-4 text-white/55 text-lg md:text-l xl:text-xl">
                         Fill out the form and Team Chopra will reach out to you within
                         one business day to discuss your real estate needs.
                     </p>

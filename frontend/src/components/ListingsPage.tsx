@@ -5,6 +5,8 @@ type Listing = {
     city: string;
     price: number;
     listing_type: string;
+    bedrooms: number;
+    bathrooms: number;
 };
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -45,9 +47,11 @@ export default function Listings_Page() {
                                         <span className="text-white text-xl font-bold">View Property Details</span>
                                     </div>
                                 </div>
-                                <div className="grid row-2 text-center text-2xl md:text-3xl mt-3 gap-1 ">
-                                    <h3>{listing.address}, {listing.city}</h3>
+                                <div className="grid text-left font-sans pr-24 row-2 text-lg md:text-xl mt-3 gap-1 ">
+                                    <h3 className="">{listing.address}, {listing.city}</h3>
                                     <h3>${listing.price.toLocaleString("en-CA")}</h3>
+                                    <h3 className="md:text-sm">{listing.bedrooms} Beds | {listing.bathrooms} Baths</h3> 
+                                    
                                 </div>
                             </div>
                         </Link>
