@@ -105,9 +105,39 @@ class ListingCreate(BaseModel):
 
 
 @app.get("/api/listings")
-def getlistings():
-    response=(supabase.table("listings").select("*").execute())
+def getlistings( listing_type: str | None = None,
+    property_type: str | None = None,
+    city: str | None = None,
+    min_price: int | None = None,
+    max_price: int | None = None,
+    bedrooms: int | None = None,
+    bathrooms: int | None = None):
+    query = supabase.table("listings").select("*")
+
+    if listing_type:
+        query = query.eq("listing_type", listing_type)
+
+    if property_type:
+        query = query.eq("property_type", property_type)
+
+    if city:
+        query = query.eq("city", city)
+
+    if min_price:
+        query = query.gte("price", min_price)
+
+    if max_price:
+        query = query.lte("price", max_price)
+
+    if bedrooms:
+        query = query.gte("bedrooms", bedrooms)
+
+    if bathrooms:
+        query = query.gte("bathrooms", bathrooms)
+
+    response = query.execute()
     return response.data
+
 @app.get("/api/listings/{id}")
 def getDetails(id:str):
     response=(supabase.table("listings").select("*").eq("id",id).execute())

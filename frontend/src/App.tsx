@@ -30,7 +30,7 @@ function App() {
         <Route
           path="/listings"
           element={
-            <div className=" bg-navy">
+            <div className=" min-h-screen bg-navy">
               <ListingsPage />
             </div>
           }

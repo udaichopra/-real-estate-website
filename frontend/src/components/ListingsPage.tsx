@@ -9,6 +9,7 @@ type Listing = {
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { API_URL } from "../config";
+import ListingsFilter from "./ListingsFilter";
 export default function Listings_Page() {
     const [listings, setlistings] = useState<Listing[]>([]);
     const getListings = async () => {
@@ -22,10 +23,8 @@ export default function Listings_Page() {
     }, []);
     return (
         <div>
-            
-            <h3 className="text-left md:ml-14 text-2xl md:text-3xl font-bold pt-2 m-5">Current listings</h3>
-
-            <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full text-3xl">
+            <ListingsFilter setlistings={setlistings} getListings={getListings} />
+            <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full text-3xl pt-5">
                 {listings.length === 0 && (
                     <h3 className="text-lg md:text-2xl">No properties are currently available</h3>
                 )}
