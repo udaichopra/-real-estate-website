@@ -72,7 +72,7 @@ export default function ListingsFilter({ setlistings, getListings }: ListingsFil
     return (
         <div>
             <h3 className="font-display text-left text-2xl md:text-3xl font-bold pt-5 md:pt-10 mx-5 md:mx-10">Team Chopra's Current Listings</h3>
-            <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-center text-left text-lg md:text-xl p-5">
+            <div className="flex flex-row flex-wrap gap-2 md:gap-4 items-center justify-center text-left text-sm md:text-xl p-5">
                 <select value={ListingFilter.listing_type} className="hover:scale-110 transition-all border rounded border-gold/75 p-2 bg-navy/75" name="listing_type" onChange={handleChange}>
                     <option value="">All Listings</option>
                     <option value="For Sale"> For Sale </option>

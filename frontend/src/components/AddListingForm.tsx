@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { API_URL } from "../config";
 export default function AddListingForm() {
     const [newListing, setNewListing] = useState({
@@ -51,43 +52,98 @@ export default function AddListingForm() {
     };
 
 
+    const inputClass = "border rounded border-gold/75 bg-navy/75 text-white px-3 py-2 focus:outline-none focus:border-gold";
+    const labelClass = "text-white/55 text-sm md:text-base";
 
     return (
-        <div>
-            <h3>Enter the information of the listing you would like to upload</h3>
-            <form>
-                <h3>Image Url:</h3> <input type="text" name="image_url" onChange={handleChange}></input>
-                <h3>Address:</h3> <input type="text" name="address" onChange={handleChange}></input>
-                <h3>Province:</h3> <input type="text" name="province" onChange={handleChange}></input>
-                <h3>City:</h3><input type="text" name="city" onChange={handleChange}></input>
-                <h3>Postal code:</h3> <input type="text" name="postal_code" onChange={handleChange}></input>
-                <h3>Price:</h3><input type="text" name="price" onChange={handleChange}></input>
-                <h3>Square footage:</h3><input type="text" name="square_feet" onChange={handleChange}></input>
-                <h3>Bedrooms:</h3><input type="text" name="bedrooms" onChange={handleChange}></input>
-                <h3>Bathrooms:</h3><input type="text" name="bathrooms" onChange={handleChange}></input>
-                <h3>For sale or for rent?: </h3>
-                <select name="listing_type" onChange={handleChange}>
-                    <option value="For sale">For sale</option>
-                    <option value="For lease">For lease</option>
-                </select>
-                <h3>Type of property</h3>
-                <select name="property_type" onChange={handleChange}>
-                    <option value="Detached">Detached</option>
-                    <option value="Semi-Detached">Semi-Detached</option>
-                    <option value="Townhouse">Townhouse</option>
-                    <option value="Condo">Condo</option>
-                    <option value="Apartment">Apartment</option>
-                    <option value="Commercial">Commercial</option>
-                    <option value="Land">Land</option>
-                </select>
-                <h3>Would you like to feature this listing on your site?</h3>
-                <select name="featured" onChange={handleChange}>
-                    <option value="false">No</option>
-                    <option value="true">Yes</option>
-                </select>
-                <h3>Write a desctiption of the property:</h3> <input type="text" name="description" onChange={handleChange}></input>
-                <button type="button" onClick={handleClick}> Submit this listing</button>
-                <h3>{String(status)}</h3>
+        <div className="max-w-4xl mx-auto">
+            <Link to="/admin" className="text-gold/75 hover:text-gold text-sm">← Back to Dashboard</Link>
+            <h3 className="font-display text-gold font-bold text-2xl md:text-3xl mt-4">Add a New Listing</h3>
+            <p className="text-white/55 mt-2">Fill out the details below to publish a new property.</p>
+            <hr className="border-gold mt-4 mb-6 w-40" />
+
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-1 md:col-span-2">
+                    <label className={labelClass}>Image URL</label>
+                    <input className={inputClass} type="text" name="image_url" onChange={handleChange}></input>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <label className={labelClass}>Address</label>
+                    <input className={inputClass} type="text" name="address" onChange={handleChange}></input>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <label className={labelClass}>Province</label>
+                    <input className={inputClass} type="text" name="province" onChange={handleChange}></input>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <label className={labelClass}>City</label>
+                    <input className={inputClass} type="text" name="city" onChange={handleChange}></input>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <label className={labelClass}>Postal Code</label>
+                    <input className={inputClass} type="text" name="postal_code" onChange={handleChange}></input>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <label className={labelClass}>Price</label>
+                    <input className={inputClass} type="text" name="price" onChange={handleChange}></input>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <label className={labelClass}>Square Footage</label>
+                    <input className={inputClass} type="text" name="square_feet" onChange={handleChange}></input>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <label className={labelClass}>Bedrooms</label>
+                    <input className={inputClass} type="text" name="bedrooms" onChange={handleChange}></input>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <label className={labelClass}>Bathrooms</label>
+                    <input className={inputClass} type="text" name="bathrooms" onChange={handleChange}></input>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <label className={labelClass}>For Sale or For Lease?</label>
+                    <select className={inputClass} name="listing_type" onChange={handleChange}>
+                        <option value="For sale">For sale</option>
+                        <option value="For lease">For lease</option>
+                    </select>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <label className={labelClass}>Property Type</label>
+                    <select className={inputClass} name="property_type" onChange={handleChange}>
+                        <option value="Detached">Detached</option>
+                        <option value="Semi-Detached">Semi-Detached</option>
+                        <option value="Townhouse">Townhouse</option>
+                        <option value="Condo">Condo</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Land">Land</option>
+                    </select>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                    <label className={labelClass}>Feature This Listing?</label>
+                    <select className={inputClass} name="featured" onChange={handleChange}>
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+
+                <div className="flex flex-col gap-1 md:col-span-2">
+                    <label className={labelClass}>Description</label>
+                    <textarea className={`${inputClass} min-h-32`} name="description" onChange={handleChange}></textarea>
+                </div>
+
+                <button className="self-start bg-gold/75 rounded-xl px-6 py-2 font-display hover:scale-105 transition-all md:col-span-2" type="button" onClick={handleClick}>Submit this listing</button>
+                {status && <p className="text-white/70 md:col-span-2">{status}</p>}
             </form>
         </div>
     )

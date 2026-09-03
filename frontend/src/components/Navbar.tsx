@@ -12,7 +12,7 @@ export default function NavBar() {
             <h3 className=" text-center text-xl md:text-2xl pt-5">Team Chopra Real Estate</h3>
            </Link>
             
-            <div className="flex justify-between items-center gap-8 items-center px-5">
+            <div className="flex justify-between items-center gap-8 items-center px-5 py-2 md:py-0">
                 <h3></h3>
                 <Link className="text-xl text-bold hover:scale-120 transition-all" to="/">Homepage</Link>
                 <Link className="text-xl text-bold hover:scale-120 transition-all" to="/listings"> Listings</Link>

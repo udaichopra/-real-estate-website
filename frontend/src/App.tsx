@@ -9,6 +9,7 @@ import AdminLogin from "./components/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminViewListing from "./components/AdminViewListings";
 import AdminEditListing from "./components/AdminEditListing";
+import AdminHome from "./components/AdminHome";
 
 function App() {
   return (
@@ -46,12 +47,27 @@ function App() {
         />
 
         <Route
+          path="/admin"
+          element={
+            <div className="min-h-screen bg-navy">
+              <div className="mx-auto max-w-6xl px-6 py-10">
+                <ProtectedRoute>
+                  <AdminHome />
+                </ProtectedRoute>
+              </div>
+            </div>
+          }
+        />
+
+        <Route
           path="/admin/newlisting"
           element={
-            <div className="mx-auto max-w-6xl px-6 py-10">
-              <ProtectedRoute>
-                <AddListingForm />
-              </ProtectedRoute>
+            <div className="min-h-screen bg-navy">
+              <div className="mx-auto max-w-6xl px-6 py-10">
+                <ProtectedRoute>
+                  <AddListingForm />
+                </ProtectedRoute>
+              </div>
             </div>
           }
         />
@@ -59,8 +75,10 @@ function App() {
         <Route
           path="/admin/login"
           element={
-            <div className="mx-auto max-w-6xl px-6 py-10">
-              <AdminLogin />
+            <div className="min-h-screen bg-navy">
+              <div className="mx-auto max-w-6xl px-6 py-10">
+                <AdminLogin />
+              </div>
             </div>
           }
         />
@@ -68,10 +86,12 @@ function App() {
         <Route
           path="/admin/viewlistings"
           element={
-            <div className="mx-auto max-w-6xl px-6 py-10">
-              <ProtectedRoute>
-                <AdminViewListing />
-              </ProtectedRoute>
+            <div className="min-h-screen bg-navy">
+              <div className="mx-auto max-w-6xl px-6 py-10">
+                <ProtectedRoute>
+                  <AdminViewListing />
+                </ProtectedRoute>
+              </div>
             </div>
           }
         />
@@ -79,10 +99,12 @@ function App() {
         <Route
           path="/admin/editlisting/:id"
           element={
-            <div className="mx-auto max-w-6xl px-6 py-10">
-              <ProtectedRoute>
-                <AdminEditListing />
-              </ProtectedRoute>
+            <div className="min-h-screen bg-navy">
+              <div className="mx-auto max-w-6xl px-6 py-10">
+                <ProtectedRoute>
+                  <AdminEditListing />
+                </ProtectedRoute>
+              </div>
             </div>
           }
         />

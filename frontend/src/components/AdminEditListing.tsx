@@ -73,29 +73,73 @@ export default function AdminEditListing() {
         }
         fetchListing();
     }, [id]);
+    const inputClass = "border rounded border-gold/75 bg-navy/75 text-white px-3 py-2 focus:outline-none focus:border-gold";
+    const labelClass = "text-white/55 text-sm md:text-base";
+
     return (
-        <div>
+        <div className="max-w-4xl mx-auto">
             {listing && (
 
-                <form className="text-left mb-4 text-xl" onSubmit={handleSubmit}>
-                    <img className=" h-150 object-cover text-left"
+                <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+                    <div>
+                        <h3 className="font-display text-gold font-bold text-2xl md:text-3xl">Edit Listing</h3>
+                        <hr className="border-gold mt-4 mb-6 w-40" />
+                    </div>
+
+                    <img className="w-full h-80 object-cover rounded-xl"
                         src={listing.image_url}
                         alt={listing.address}
                     />
-                    <h3>Image URL: </h3><input type="text" name="image_url" value={listing.image_url} onChange={handleChange}></input>
-                    <h3>Address: </h3><input type="text" name="address" value={listing.address} onChange={handleChange}></input>
-                    <h3>City: </h3><input type="text" name="city" value={listing.city} onChange={handleChange}></input>
-                    <h3>Province: </h3><input type="text" name="province" value={listing.province} onChange={handleChange}></input>
-                    <h3>Price: </h3><input type="number" name="price" value={listing.price} onChange={handleChange}></input>
-                    <h3>Listing Type: </h3><input type="text" name="listing_type" value={listing.listing_type} onChange={handleChange}></input>
-                    <h3>Property Type: </h3><input type="text" name="property_type" value={listing.property_type} onChange={handleChange}></input>
-                    <h3>Square footage: </h3><input type="number" name="square_feet" value={listing.square_feet} onChange={handleChange}></input>
-                    <h3>Bedrooms: </h3><input type="number" name="bedrooms" value={listing.bedrooms} onChange={handleChange}></input>
-                    <h3>Bathrooms: </h3><input type="number" name="bathrooms" value={listing.bathrooms} onChange={handleChange}></input>
-                    <h3>Description: </h3><textarea name="description" value={listing.description} onChange={handleChange}></textarea>
-                    <button type="submit">Save Changes</button >
-                    
-                    {status && <p>{status}</p>}
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-1 md:col-span-2">
+                            <label className={labelClass}>Image URL</label>
+                            <input className={inputClass} type="text" name="image_url" value={listing.image_url} onChange={handleChange}></input>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label className={labelClass}>Address</label>
+                            <input className={inputClass} type="text" name="address" value={listing.address} onChange={handleChange}></input>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label className={labelClass}>City</label>
+                            <input className={inputClass} type="text" name="city" value={listing.city} onChange={handleChange}></input>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label className={labelClass}>Province</label>
+                            <input className={inputClass} type="text" name="province" value={listing.province} onChange={handleChange}></input>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label className={labelClass}>Price</label>
+                            <input className={inputClass} type="number" name="price" value={listing.price} onChange={handleChange}></input>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label className={labelClass}>Listing Type</label>
+                            <input className={inputClass} type="text" name="listing_type" value={listing.listing_type} onChange={handleChange}></input>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label className={labelClass}>Property Type</label>
+                            <input className={inputClass} type="text" name="property_type" value={listing.property_type} onChange={handleChange}></input>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label className={labelClass}>Square Footage</label>
+                            <input className={inputClass} type="number" name="square_feet" value={listing.square_feet} onChange={handleChange}></input>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label className={labelClass}>Bedrooms</label>
+                            <input className={inputClass} type="number" name="bedrooms" value={listing.bedrooms} onChange={handleChange}></input>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label className={labelClass}>Bathrooms</label>
+                            <input className={inputClass} type="number" name="bathrooms" value={listing.bathrooms} onChange={handleChange}></input>
+                        </div>
+                        <div className="flex flex-col gap-1 md:col-span-2">
+                            <label className={labelClass}>Description</label>
+                            <textarea className={`${inputClass} min-h-32`} name="description" value={listing.description} onChange={handleChange}></textarea>
+                        </div>
+                    </div>
+
+                    <button className="self-start bg-gold/75 rounded-xl px-6 py-2 font-display hover:scale-105 transition-all" type="submit">Save Changes</button>
+                    {status && <p className="text-white/70">{status}</p>}
                 </form>
 
             )}

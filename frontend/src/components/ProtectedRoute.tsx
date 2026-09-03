@@ -17,7 +17,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
         checkSession();
     }, []);
     if (loggedIn === null) {
-        return <p>Checking login...</p>;
+        return <p className="text-center text-white/55 py-10">Checking login...</p>;
     }
     if (!loggedIn) {
         return <Navigate to="/admin/login" replace />;

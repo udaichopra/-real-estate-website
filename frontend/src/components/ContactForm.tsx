@@ -68,7 +68,7 @@ export default function ContactForm({ listing_id, heading = "Ready to Buy, Sell,
 
             <div className="bg-navy-mid/75 px-6 py-10 md:px-10 md:py-20">
                 <div className="w-full max-w-md lg:max-w-lg xl:max-w-xl mx-auto">
-                    <h3 className="font-display text-gold font-bold text-2xl md:text-3xl xl:text-5xl">
+                    <h3 className="font-display text-gold font-bold text-3xl md:text-4xl ">
                         {heading}
                     </h3>
 
@@ -97,7 +97,7 @@ export default function ContactForm({ listing_id, heading = "Ready to Buy, Sell,
 
 
             <form className="mx-auto flex w-full max-w-md lg:max-w-lg xl:max-w-xl flex-col gap-4 px-6 py-10 md:py-20" onSubmit={handleClick}>
-                <h3 className="font-display font-bold pt-5 text-gold text-3xl md:text-4xl">Send Us a Message</h3>
+                <h3 className="font-display font-bold  text-gold text-3xl md:text-4xl">Send Us a Message</h3>
                 <h3 className="mt-5">Full name:</h3><input className="flex text-left text-white/50 text-md md:text-lg" type="text" name="full_name" placeholder="John Smith" onChange={handleChange} ></input>
                 <hr className="border-white/50"></hr>
                 <h3>Email:</h3><input className="text-white/50 text-md md:text-lg" type="text" name="email" placeholder="johnsmith@example.com" onChange={handleChange} ></input>
