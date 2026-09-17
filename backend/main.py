@@ -95,7 +95,7 @@ class ListingCreate(BaseModel):
     price: int
     bedrooms: int
     bathrooms: int
-    square_feet: int
+    square_feet: str = Field(min_length=1, max_length=50)
     description: str = Field(max_length=2000)
     listing_type: str
     property_type: str

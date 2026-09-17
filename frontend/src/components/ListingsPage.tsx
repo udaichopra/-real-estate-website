@@ -54,7 +54,7 @@ export default function Listings_Page() {
                                 </div>
                                 <div className="grid text-left font-sans pr-24 row-2 text-lg md:text-xl mt-3 gap-1 ">
                                     <h3 className="">{listing.address}, {listing.city}</h3>
-                                    <h3>${listing.price.toLocaleString("en-CA")}</h3>
+                                    <h3>${listing.price.toLocaleString("en-CA")}{listing.listing_type === "For lease" && "/month"}</h3>
                                     <h3 className="text-sm">{listing.bedrooms} Beds | {listing.bathrooms} Baths</h3> 
                                     
                                 </div>

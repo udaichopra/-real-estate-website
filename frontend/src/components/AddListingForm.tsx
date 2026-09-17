@@ -13,7 +13,7 @@ export default function AddListingForm() {
         if (name === "featured") {
             value = value === "true";
         }
-        if (name === "price" || name === "bedrooms" || name === "bathrooms" || name === "square_feet") {
+        if (name === "price" || name === "bedrooms" || name === "bathrooms") {
             value = Number(value);
         }
         setNewListing({ ...newListing, [name]: value });
@@ -95,7 +95,7 @@ export default function AddListingForm() {
 
                 <div className="flex flex-col gap-1">
                     <label className={labelClass}>Square Footage</label>
-                    <input className={inputClass} type="text" name="square_feet" onChange={handleChange}></input>
+                    <input className={inputClass} type="text" name="square_feet" placeholder="e.g. 1000-1500" onChange={handleChange}></input>
                 </div>
 
                 <div className="flex flex-col gap-1">

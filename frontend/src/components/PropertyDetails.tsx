@@ -15,7 +15,7 @@ export default function PropertyDetails() {
         price: number;
         listing_type: string;
         property_type: string;
-        square_feet: number;
+        square_feet: string;
         bedrooms: number;
         bathrooms: number;
         description: string;
@@ -61,7 +61,7 @@ export default function PropertyDetails() {
                 </div>
                 <div className="grid text-left  text-2xl md:text-3xl font-bold00">
                     <h3>{details.address} , {details.city}, {details.province}</h3>
-                    <h3>${details.price.toLocaleString("en-CA")}</h3>
+                    <h3>${details.price.toLocaleString("en-CA")}{details.listing_type === "For lease" && "/month"}</h3>
                 </div>
                 <div className="grid text-left pt-5 pb-4 text-2xl md:text-3xl font-bold">
                     <h3>Property details:</h3>

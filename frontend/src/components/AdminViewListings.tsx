@@ -11,7 +11,7 @@ type Listing = {
     price: number;
     listing_type: string;
     property_type: string;
-    square_feet: number;
+    square_feet: string;
     bedrooms: number;
     bathrooms: number;
     description: string;
@@ -52,7 +52,7 @@ export default function AdminViewListing() {
                         <div className="p-5 flex flex-col gap-1">
                             <h3 className="font-display text-xl font-bold">{listing.address}</h3>
                             <p className="text-white/55">{listing.city}, {listing.province}</p>
-                            <p className="text-gold text-lg">${listing.price.toLocaleString("en-CA")}</p>
+                            <p className="text-gold text-lg">${listing.price.toLocaleString("en-CA")}{listing.listing_type === "For lease" && "/month"}</p>
                             <p className="text-white/55 text-sm">{listing.listing_type} • {listing.property_type}</p>
                             <p className="text-white/55 text-sm">{listing.square_feet} sq ft • {listing.bedrooms} beds • {listing.bathrooms} baths</p>
                             <p className="text-white/70 text-sm mt-2 line-clamp-3">{listing.description}</p>

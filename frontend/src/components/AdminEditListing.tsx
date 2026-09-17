@@ -11,7 +11,7 @@ type Listing = {
     price: number;
     listing_type: string;
     property_type: string;
-    square_feet: number;
+    square_feet: string;
     bedrooms: number;
     bathrooms: number;
     description: string;
@@ -122,7 +122,7 @@ export default function AdminEditListing() {
                         </div>
                         <div className="flex flex-col gap-1">
                             <label className={labelClass}>Square Footage</label>
-                            <input className={inputClass} type="number" name="square_feet" value={listing.square_feet} onChange={handleChange}></input>
+                            <input className={inputClass} type="text" name="square_feet" value={listing.square_feet} onChange={handleChange}></input>
                         </div>
                         <div className="flex flex-col gap-1">
                             <label className={labelClass}>Bedrooms</label>
