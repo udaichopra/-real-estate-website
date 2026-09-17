@@ -21,21 +21,21 @@ export default function HomePage() {
                         </h1>
 
                         <h2 className="font-sans text-2xl md:text-3xl pt-1 mx-auto max-w-3xl text-white/85">
-                            Your GTA Real Estate Experts bring 20 years of
+                            Your GTA Real Estate Experts bring 17 years of
                             award-winning experience to every deal — buying,
                             selling, or investing.
                         </h2>
 
                         <div className="grid grid-cols-2 pt-6 gap-6 pb-50 md:pb-20">
                             <Link
-                                className="bg-blue-900 px-2 py-2 text-xl rounded-xl md:text-2xl hover:scale-105 transition-all"
+                                className="bg-gold/85 px-2 py-2 text-xl rounded-xl md:text-2xl hover:scale-105 transition-all"
                                 to="/listings"
                             >
                                 View Listings
                             </Link>
 
                             <Link
-                                className="bg-blue-900 px-2 py-2 text-xl rounded-xl md:text-2xl hover:scale-105 transition-all"
+                                className="bg-gold/85 px-2 py-2 text-xl rounded-xl md:text-2xl hover:scale-105 transition-all"
                                 to="/contact"
                             >
                                 Contact Puneet

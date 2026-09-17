@@ -14,10 +14,12 @@ import { API_URL } from "../config";
 import ListingsFilter from "./ListingsFilter";
 export default function Listings_Page() {
     const [listings, setlistings] = useState<Listing[]>([]);
+    const [loading, setLoading] = useState(true);
     const getListings = async () => {
         const response = await fetch(`${API_URL}/api/listings`);
         const data = await response.json()
         setlistings(data)
+        setLoading(false)
 
     }
     useEffect(() => {
@@ -27,7 +29,10 @@ export default function Listings_Page() {
         <div>
             <ListingsFilter setlistings={setlistings} getListings={getListings} />
             <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full text-3xl pt-5">
-                {listings.length === 0 && (
+                {loading && (
+                    <h3 className="text-lg md:text-2xl">Loading listings...</h3>
+                )}
+                {!loading && listings.length === 0 && (
                     <h3 className="text-lg md:text-2xl">No properties are currently available</h3>
                 )}
                 {listings.map((listing) => (
