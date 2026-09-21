@@ -160,7 +160,6 @@ def post_newlisting(new_listing: ListingCreate):
         .ilike("city", new_listing.city.strip())
         .ilike("province", new_listing.province.strip())
         .ilike("postal_code", new_listing.postal_code.replace(" ", ""))
-        .ilike("bedrooms,")
         .execute()
     )
 
