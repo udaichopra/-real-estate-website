@@ -36,9 +36,9 @@ export default function Listings_Page() {
                     <h3 className="text-lg md:text-2xl">No properties are currently available</h3>
                 )}
                 {listings.map((listing) => (
-                    <div>
+                    <div key={listing.id}>
                         <Link to={`/listings/${listing.id}`}>
-                            <div className=" hover:scale-105 grid place-items-center hover:scale-105 hover:text-blue-500 transition-all" key={listing.id}>
+                            <div className=" hover:scale-105 grid place-items-center hover:scale-105 hover:text-blue-500 transition-all">
                                 <div className="relative">
                                     <div className="absolute top-2 left-2 bg-blue-900 text-white px-4 py-2 rounded-xl text-lg font-bold">
                                         {listing.listing_type}
@@ -52,7 +52,7 @@ export default function Listings_Page() {
                                         <span className="text-white text-xl font-bold">View Property Details</span>
                                     </div>
                                 </div>
-                                <div className="grid text-left font-sans pr-24 row-2 text-lg md:text-xl mt-3 gap-1 ">
+                                <div className="grid text-left font-sans pr-24 row-2 text-lg md:text-xl mt-3 gap-1 w-full">
                                     <h3 className="">{listing.address}, {listing.city}</h3>
                                     <h3>${listing.price.toLocaleString("en-CA")}{listing.listing_type === "For lease" && "/month"}</h3>
                                     <h3 className="text-sm">{listing.bedrooms} Beds | {listing.bathrooms} Baths</h3> 
