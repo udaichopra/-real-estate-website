@@ -45,7 +45,7 @@ export default function PropertyDetails() {
     return (
         <div className="grid place-items-center text-xl md:text-3xl text-center pt-5 ">
             <div>
-                <div className="grid place-items-center pb-4">
+                <div className="grid place-items-center pb-4 m-5">
 
                     <div className="relative">
                         <div className="absolute top-2 left-2 bg-blue-900 text-white px-4 py-2 rounded-xl text-lg font-bold">
@@ -59,16 +59,16 @@ export default function PropertyDetails() {
                         />
                     </div>
                 </div>
-                <div className="grid text-left  text-2xl md:text-3xl font-bold00">
+                <div className="grid text-left  text-xl md:text-2xl font-bold00 m-5">
                     <h3>{details.address} , {details.city}, {details.province}</h3>
                     <h3>${details.price.toLocaleString("en-CA")}{details.listing_type === "For lease" && "/month"}</h3>
                 </div>
-                <div className="grid text-left pt-5 pb-4 text-2xl md:text-3xl font-bold">
+                <div className="grid text-left pt-5 pb-4 text-xl md:text-2xl font-bold m-5">
                     <h3>Property details:</h3>
                     <hr className="mt-2 border-gray-300" />
                 </div>
 
-                <div className="grid text-left gap-2 text-xl md:text-2xl ">
+                <div className="grid text-left gap-2 text-l md:text-xl m-5 ">
                     <h3>Square footage: {details.square_feet}</h3>
                     <h3>Bedrooms: {details.bedrooms}</h3>
                     <h3>Bathrooms: {details.bathrooms}</h3>
@@ -80,12 +80,12 @@ export default function PropertyDetails() {
                     )}
                     
                 </div>
-                <div className="grid text-left pt-5 pb-4 text-2xl md:text-3xl font-bold">
+                <div className="grid text-left pt-5 pb-4 text-2xl md:text-3xl font-bold m-5">
                     <h3>Location:</h3>
                     <hr className="mt-2 border-gray-300" />
                 </div>
     
-                <div className="grid place-items-center mt-1">
+                <div className="grid place-items-center mt-1 m-5">
                     <PropertyMap
                         latitude={details.latitude}
                         longitude={details.longitude}
