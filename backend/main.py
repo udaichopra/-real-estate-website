@@ -105,6 +105,18 @@ class ListingCreate(BaseModel):
     province: str = Field(min_length=2, max_length=50)
     postal_code: str = Field(min_length=3, max_length=10)
 
+class SoldPropertyCreate(BaseModel):
+    listing_id: str | None = None
+    address: str = Field(min_length=1, max_length=100)
+    city: str = Field(min_length=1, max_length=50)
+    sale_price: int
+    closing_date: str
+    buyer_name: str | None = Field(default=None, max_length=100)
+    buyer_email: EmailStr | None = None
+    buyer_phone: str | None = Field(default=None, max_length=30)
+    transaction_type: str
+    notes: str | None = Field(default=None, max_length=2000)
+
 
 @app.get("/api/listings")
 def getlistings( listing_type: str | None = None,
@@ -198,6 +210,15 @@ def update(id:str,updated_listing: ListingCreate):
 @app.delete("/admin/deletelisting/{id}")
 def delete_listing(id:str):
     response=(supabase.table("listings").delete().eq("id",id).execute())
+    return response.data
+
+@app.post("/admin/markassold", status_code=status.HTTP_201_CREATED)
+def mark_as_sold(sold_property: SoldPropertyCreate):
+    response=(supabase.table("sold_properties").insert(sold_property.model_dump()).execute())
+
+    if sold_property.listing_id:
+        supabase.table("listings").delete().eq("id", sold_property.listing_id).execute()
+
     return response.data
 
 
