@@ -27,6 +27,8 @@ app.add_middleware(
     "https://real-estate-website-ten-henna.vercel.app",
     ],
 
+    allow_origin_regex=r"https://.*\.vercel\.app",
+
     allow_credentials=True,
 
     allow_methods=["*"],
