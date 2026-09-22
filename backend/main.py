@@ -195,4 +195,9 @@ def update(id:str,updated_listing: ListingCreate):
     response=(supabase.table("listings").update(updated_listing.model_dump()).eq("id",id).execute())
     return response.data
 
+@app.delete("/admin/deletelisting/{id}")
+def delete_listing(id:str):
+    response=(supabase.table("listings").delete().eq("id",id).execute())
+    return response.data
+
 

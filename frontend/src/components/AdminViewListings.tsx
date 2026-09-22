@@ -34,6 +34,19 @@ export default function AdminViewListing() {
         navigate(`/admin/editlisting/${listingId}`);
     }
 
+    const handleDelete = async (listingId: string) => {
+        if (!confirm("Delete this listing? This can't be undone.")) {
+            return;
+        }
+        const response = await fetch(`${API_URL}/admin/deletelisting/${listingId}`, {
+            method: "DELETE",
+        });
+        if (!response.ok) {
+            return;
+        }
+        setListings(listings.filter((listing) => listing.id !== listingId));
+    }
+
 
 
     return (
@@ -56,7 +69,10 @@ export default function AdminViewListing() {
                             <p className="text-white/55 text-sm">{listing.listing_type} • {listing.property_type}</p>
                             <p className="text-white/55 text-sm">{listing.square_feet} sq ft • {listing.bedrooms} beds • {listing.bathrooms} baths</p>
                             <p className="text-white/70 text-sm mt-2 line-clamp-3">{listing.description}</p>
-                            <button className="self-start mt-4 bg-gold/75 rounded-xl px-6 py-2 font-display hover:scale-105 transition-all" onClick={() => handleEdit(listing.id)}>Edit this Listing</button>
+                            <div className="flex gap-3 mt-4">
+                                <button className="bg-gold/75 rounded-xl px-6 py-2 font-display hover:scale-105 transition-all" onClick={() => handleEdit(listing.id)}>Edit this Listing</button>
+                                <button className="border border-white/30 text-white/70 rounded-xl px-6 py-2 font-display hover:scale-105 transition-all" onClick={() => handleDelete(listing.id)}>Delete</button>
+                            </div>
                         </div>
                     </div>
                 ))}
