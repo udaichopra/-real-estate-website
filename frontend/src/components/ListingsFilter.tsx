@@ -23,6 +23,7 @@ import { API_URL } from "../config";
 
 export default function ListingsFilter({ setlistings, getListings }: ListingsFilterProps) {
     const [ListingFilter, setListingFilter] = useState({ listing_type: "", property_type: "", city: "", bedrooms: "", bathrooms: "", min_price: "", max_price: "" });
+    const [showFilters, setShowFilters] = useState(false);
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -76,7 +77,12 @@ export default function ListingsFilter({ setlistings, getListings }: ListingsFil
     return (
         <div>
             <h3 className="font-display text-left text-2xl md:text-3xl font-bold pt-5 md:pt-10 mx-5 md:mx-10">Team Chopra's Current Listings</h3>
-            <div className="flex flex-row flex-wrap gap-2 md:gap-4 items-center justify-center text-left text-sm md:text-xl p-5">
+            <div className="flex justify-center md:hidden">
+                <button className="hover:scale-110 transition-all border rounded border-gold/75 bg-navy/75 px-4 py-2 my-3" type="button" onClick={() => setShowFilters(!showFilters)}>
+                    {showFilters ? "Hide Filters" : "Show Filters"}
+                </button>
+            </div>
+            <div className={`${showFilters ? "flex" : "hidden"} md:flex flex-row flex-wrap gap-2 md:gap-4 items-center justify-center text-left text-sm md:text-xl p-5`}>
                 <select value={ListingFilter.listing_type} className="hover:scale-110 transition-all border rounded border-gold/75 p-2 bg-navy/75" name="listing_type" onChange={handleChange}>
                     <option value="">All Listings</option>
                     <option value="For Sale"> For Sale </option>
@@ -142,7 +148,7 @@ export default function ListingsFilter({ setlistings, getListings }: ListingsFil
                 </select>
 
             </div>
-            <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-center text-left p-3 ">
+            <div className={`${showFilters ? "flex" : "hidden"} md:flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-center text-left p-3`}>
                 <button className="hover:scale-110 transition-all border rounded bg-gold/75 p-1" type="button" onClick={handleFilter}> Apply filters </button>
                 <button className="hover:scale-110 transition-all border rounded bg-gold/75 p-1" type="button" onClick={clearFilter}> Clear filters </button>
             </div>
