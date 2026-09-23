@@ -11,6 +11,7 @@ import AdminViewListing from "./components/AdminViewListings";
 import AdminEditListing from "./components/AdminEditListing";
 import AdminHome from "./components/AdminHome";
 import AdminMarkSold from "./components/AdminMarkSold";
+import AdminSoldProperties from "./components/AdminSoldProperties";
 
 function App() {
   return (
@@ -117,6 +118,19 @@ function App() {
               <div className="mx-auto max-w-6xl px-6 py-10">
                 <ProtectedRoute>
                   <AdminMarkSold />
+                </ProtectedRoute>
+              </div>
+            </div>
+          }
+        />
+
+        <Route
+          path="/admin/soldproperties"
+          element={
+            <div className="min-h-screen bg-navy">
+              <div className="mx-auto max-w-6xl px-6 py-10">
+                <ProtectedRoute>
+                  <AdminSoldProperties />
                 </ProtectedRoute>
               </div>
             </div>

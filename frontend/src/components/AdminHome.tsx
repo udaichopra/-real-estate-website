@@ -30,6 +30,11 @@ export default function AdminHome() {
                     <h3 className="font-display text-xl font-bold text-gold">Manage Listings</h3>
                     <p className="text-white/55 mt-2">View and edit the listings currently on the site.</p>
                 </Link>
+
+                <Link to="/admin/soldproperties" className="bg-navy-mid/50 rounded-2xl p-6 hover:scale-105 transition-all">
+                    <h3 className="font-display text-xl font-bold text-gold">Sold Properties</h3>
+                    <p className="text-white/55 mt-2">View completed transactions and buyer info.</p>
+                </Link>
             </div>
         </div>
     );

@@ -221,4 +221,9 @@ def mark_as_sold(sold_property: SoldPropertyCreate):
 
     return response.data
 
+@app.get("/admin/soldproperties")
+def get_sold_properties():
+    response=(supabase.table("sold_properties").select("*").order("created_at", desc=True).execute())
+    return response.data
+
 
