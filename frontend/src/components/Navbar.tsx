@@ -11,12 +11,12 @@ export default function NavBar() {
                 <img
                     src="/logo.png"
                     alt="Puneet Chopra Real Estate Logo"
-                    className="h-12 md:h-16 w-auto px-5"
+                    className="h-10 md:h-16 w-auto px-2 md:px-5"
                 />
-                <h3 className=" text-center text-xl md:text-2xl">Team Chopra Real Estate</h3>
+                <h3 className="text-center text-sm md:text-2xl whitespace-nowrap">Team Chopra Real Estate</h3>
                </Link>
 
-                <button className="md:hidden px-5 text-3xl text-gold" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+                <button className="md:hidden px-3 text-3xl text-gold" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
                     {menuOpen ? "✕" : "☰"}
                 </button>
 
