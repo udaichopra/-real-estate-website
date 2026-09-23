@@ -3,10 +3,14 @@ type Listing = {
     image_url: string;
     address: string;
     city: string;
+    province: string;
     price: number;
     listing_type: string;
+    property_type: string;
+    square_feet: string;
     bedrooms: number;
     bathrooms: number;
+    description: string;
 };
 type ListingsFilterProps = {
     setlistings: React.Dispatch<React.SetStateAction<Listing[]>>;
